@@ -13,3 +13,18 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Images, video files
+*.jpg
+*.JPG
+*.jpeg
+*.JPEG
+*.png
+*.PNG
+*.BMP
+*.bmp
+*.mp4
+*.webm
+*.mov
+*.mpeg
+*.gif
