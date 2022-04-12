@@ -6,7 +6,7 @@ import (
     "strings"
     "errors"
     "github.com/joho/godotenv"
-    "hourly_upload/hourly_upload"
+    "hourly_upload"
 )
 
 func ls_capture_dir() (ret [] string) {
@@ -28,7 +28,7 @@ func ls_capture_dir() (ret [] string) {
 func load_env_vars() {
 
     log.Println("Testing .env module...")
-    err := godotenv.Load(".env")
+    err := godotenv.Load("../.env")
 
     if err != nil {
         log.Fatal("Error loading .env file.")
@@ -64,6 +64,7 @@ func main() {
 
     if strings.Compare(mode, "hourly_cap") == 0 {
         log.Printf("Mode is: %s\n", mode)
+        hourly_upload.Woo()
     } else {
         // Assuming check_args( ) didn't return an error,
         // the only other possible value for mode is "mp4_compile"
