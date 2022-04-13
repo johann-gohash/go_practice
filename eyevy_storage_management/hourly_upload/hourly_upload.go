@@ -41,7 +41,6 @@ func postRequestCall(image_base64encoding string, access_token string) {
         return
     }
 
-    log.Println(access_token)
     req.Header.Add("Authorization", "Bearer" + " " + access_token)
 
     req.Header.Set("Content-Type", form.FormDataContentType())
@@ -78,5 +77,4 @@ func HourlyUpload(img_list []string, access_token string) {
     // Grabbing base64 string encoding of bytes.
     var image_base64encoding string = toBase64(img_bytes)
     postRequestCall(image_base64encoding, access_token)
-
 }

@@ -9,7 +9,7 @@ import (
     "hourly_upload"
 )
 
-func ls_capture_dir() (ret [] string) {
+func lsCaptureDir() (ret [] string) {
 
     files, err := os.ReadDir("../captures")
 
@@ -25,7 +25,7 @@ func ls_capture_dir() (ret [] string) {
     return
 }
 
-func load_env_vars() {
+func loadEnvVars() {
 
     log.Println("Testing .env module...")
     err := godotenv.Load("../.env")
@@ -36,7 +36,7 @@ func load_env_vars() {
 }
 
 
-func check_args() (mode string, err error) {
+func checkArgs() (mode string, err error) {
     // First, we expect one arg to either be hourly_cap or mp4_compile.
 
     if len(os.Args) != 2 {
@@ -55,17 +55,16 @@ func check_args() (mode string, err error) {
 
 func main() {
 
-    mode, err := check_args()
-    load_env_vars()
+    mode, err := checkArgs()
+    loadEnvVars()
 
     if err != nil {
         log.Fatal(err)
     }
     
-
     if strings.Compare(mode, "hourly_cap") == 0 {
         log.Printf("Mode is: %s\n", mode)
-        hourly_upload.HourlyUpload(ls_capture_dir(), os.Getenv("ACCESS_TOKEN"))
+        hourly_upload.HourlyUpload(lsCaptureDir(), os.Getenv("ACCESS_TOKEN"))
     } else {
         // Assuming check_args( ) didn't return an error,
         // the only other possible value for mode is "mp4_compile"
