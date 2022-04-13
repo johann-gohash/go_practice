@@ -1,3 +1,3 @@
 package alpha
 
-var a1_str string = "String from A1"
+var A1_string string = "String from A1"
