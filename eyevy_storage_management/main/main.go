@@ -11,7 +11,7 @@ import (
 
 func ls_capture_dir() (ret [] string) {
 
-    files, err := os.ReadDir("captures")
+    files, err := os.ReadDir("../captures")
 
     if err != nil {
         log.Fatal(err)
@@ -56,6 +56,7 @@ func check_args() (mode string, err error) {
 func main() {
 
     mode, err := check_args()
+    load_env_vars()
 
     if err != nil {
         log.Fatal(err)
@@ -64,18 +65,11 @@ func main() {
 
     if strings.Compare(mode, "hourly_cap") == 0 {
         log.Printf("Mode is: %s\n", mode)
-        hourly_upload.Woo()
+        hourly_upload.HourlyUpload(ls_capture_dir(), os.Getenv("ACCESS_TOKEN"))
     } else {
         // Assuming check_args( ) didn't return an error,
         // the only other possible value for mode is "mp4_compile"
         log.Printf("Mode is: %s\n", mode)
     }
 
-    load_env_vars()
-
-    /*
-        var access_token_key string = os.Getenv("ACCESS_TOKEN")
-        var mp4_compiles_album string = os.Getenv("MP4_COMPILES_ALBUM_ID")
-        var hourly_compiles_album string = os.Getenv("HOURLY_CAPTURES_ALBUM_ID")
-    */
 }
