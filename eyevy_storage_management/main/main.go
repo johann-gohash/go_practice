@@ -27,7 +27,6 @@ func lsCaptureDir() (ret [] string) {
 
 func loadEnvVars() {
 
-    log.Println("Testing .env module...")
     err := godotenv.Load("../.env")
 
     if err != nil {
@@ -64,11 +63,12 @@ func main() {
     
     if strings.Compare(mode, "hourly_cap") == 0 {
         log.Printf("Mode is: %s\n", mode)
-        hourly_upload.HourlyUpload(lsCaptureDir(), os.Getenv("ACCESS_TOKEN"))
+        hourly_upload.HourlyUpload(lsCaptureDir(), 
+                                   os.Getenv("ACCESS_TOKEN"),
+                                   os.Getenv("DISCORD_WEBHOOK_URL"))
     } else {
         // Assuming check_args( ) didn't return an error,
         // the only other possible value for mode is "mp4_compile"
         log.Printf("Mode is: %s\n", mode)
     }
-
 }
