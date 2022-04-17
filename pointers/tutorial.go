@@ -10,5 +10,4 @@ func main() {
     *y += 2
     fmt.Println(x)
 
-
 }
