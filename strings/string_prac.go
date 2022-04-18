@@ -14,7 +14,9 @@ type User struct {
 func main() {
 
 
-    y := strings.Split("Dima:Pass123", ":")
+    the_string := "Dima:Pass123"
+
+    y := strings.Split(*&the_string, ":")
     // fmt.Println(y)
     // fmt.Print(reflect.TypeOf(y))
     z := User{y[0], y[1]}
