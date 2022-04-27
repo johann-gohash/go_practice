@@ -6,14 +6,14 @@ import (
 )
 
 var (
-    ErrYoureFuckedUp = errors.New("You talk like a fag and your shit's all retarded.")
+    ErrSomethingMessedUp = errors.New("There's an issue I refuse to elaborate.")
 )
 
 
 func EvenOrError (number int) error { 
     var err error
     if number%2 != 0 {
-        err = ErrYoureFuckedUp
+        err = ErrSomethingMessedUp
     }
     return err
 }
