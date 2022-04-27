@@ -28,12 +28,10 @@ func main () {
     */
 
     c, err := net.Dial("tcp", CONNECT)
-
     if err != nil {
         fmt.Println(err)
         return
     }
-
 
     /*
         The entire for loop that is used to read user input will only terminate when you
